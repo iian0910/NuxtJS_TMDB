@@ -1,0 +1,27 @@
+// 首先要引入 bootstrap 5 的 functions
+@import "bootstrap/scss/functions";
+
+// 複寫官方的 variable
+@import "./helper/variables";
+
+// 引入 bootstrap 5 需要的功能與元件
+// @import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/pagination";
+
+@import "bootstrap/scss/utilities/api";
+
+// 最下面 import 自己的客製化 scss 檔案
