@@ -3,9 +3,9 @@
   <div class="container-fluid">
     <DemoArea />
   </div>
+  <!-- 中間區塊 -->
   <div class="container">
-    <!-- 現正熱映 -->
-    <div class="row">
+    <div class="row py-5">
       <h3 class="block_title my-3">現正熱映</h3>
       <div
         class="col-12 col-sm-6 col-lg-2 cursor-pointer mb-3"
@@ -28,7 +28,7 @@
       </div>
     </div>
     <!-- TOP 排行榜 -->
-    <div class="row">
+    <div class="row py-5">
       <h3 class="block_title my-3">TOP 排行榜</h3>
       <div
         class="col-12 col-sm-6 col-lg-2 cursor-pointer mb-3"
@@ -42,6 +42,8 @@
       </div>
     </div>
   </div>
+  <!-- Footer -->
+  <Footer />
 </template>
 
 <script setup>
@@ -49,6 +51,7 @@ import { getMovieList, getPopularList } from '../api/movie'
 import { useRoute } from 'vue-router'
 import DemoArea from '../components/DemoArea.vue'
 import MovieCard from '../components/MovieCard.vue'
+import Footer from '../components/Footer.vue'
 
 const movieList = ref()
 const popularList = ref([])
