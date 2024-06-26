@@ -12,17 +12,10 @@
         v-for="movie in movieList"
         :key="movie.id"
       >
-        <div class="card" @click="detail(movie.id)">
-          <img
-            :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-            class="card-img-top img-thumbnail"
-            :alt="movie.original_title"
-          >
-          <div class="card-body">
-            <h6 class="card-title fw-bold mt-2 mb-0">{{ movie.title }}</h6>
-            <small class="text-muted">{{ movie.release_date }}</small>
-          </div>
-        </div>
+        <MovieCard
+          :movie="movie"
+          @detail="detail"
+        />
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button
@@ -42,17 +35,10 @@
         v-for="movie in popularList"
         :key="movie.id"
       >
-        <div class="card" @click="detail(movie.id)">
-          <img
-            :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-            class="card-img-top img-thumbnail"
-            :alt="movie.original_title"
-          >
-          <div class="card-body">
-            <h6 class="card-title fw-bold mt-2 mb-0">{{ movie.title }}</h6>
-            <small class="text-muted">{{ movie.release_date }}</small>
-          </div>
-        </div>
+        <MovieCard
+          :movie="movie"
+          @detail="detail"
+        />
       </div>
     </div>
   </div>
@@ -62,6 +48,7 @@
 import { getMovieList, getPopularList } from '../api/movie'
 import { useRoute } from 'vue-router'
 import DemoArea from '../components/DemoArea.vue'
+import MovieCard from '../components/MovieCard.vue'
 
 const movieList = ref()
 const popularList = ref([])

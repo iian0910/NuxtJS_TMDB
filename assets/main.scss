@@ -26,11 +26,16 @@
 
 // 最下面 import 自己的客製化 scss 檔案
 
+body {
+  background-color: #1f1f1f;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
 
 .block_title {
+  color: white;
   line-height: 2;
   &::after {
     content: '';
