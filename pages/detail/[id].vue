@@ -3,16 +3,16 @@
 </template>
 
 <script setup>
-import { getMovieDetail } from '../api/movie'
+import { getAPI } from '../api/movie'
 
 const route = useRoute()
 
 onMounted(() => {
-  detail()
+  getDetail()
 })
 
-const detail = async () => {
-  const data = await getMovieDetail(`/movie/${route.params.id}`)
+const getDetail = async () => {
+  const data = await getAPI(`/movie/${route.params.id}`)
 }
 </script>
 

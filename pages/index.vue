@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import { getMovieList, getPopularList } from '../api/movie'
+import { getAPI } from '../api/movie'
 import { useRoute } from 'vue-router'
 import DemoArea from '../components/DemoArea.vue'
 import MovieCard from '../components/MovieCard.vue'
@@ -62,19 +62,19 @@ const genreList = ref([])
 const router = useRouter()
 
 onMounted(() => {
-  initMovieList()
-  initPopularList()
+  getMovieList()
+  getPopularList()
 })
 
-const initMovieList = async () => {
-  const data = await getMovieList(`/movie/now_playing?language=zh-tw`)
+const getMovieList = async () => {
+  const data = await getAPI(`/movie/now_playing?language=zh-tw`)
   movieList.value = data.results.slice(0, 12)
   listPage.value = data.total_pages
   currentPage.value = data.page
 }
 
-const initPopularList = async () => {
-  const data = await getPopularList(`/movie/popular?language=zh-tw`)
+const getPopularList = async () => {
+  const data = await getAPI(`/movie/popular?language=zh-tw`)
   popularList.value = data.results.slice(0, 6)
 }
 
