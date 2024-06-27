@@ -47,7 +47,7 @@ onMounted(() => {
 })
 
 const getNowPlayList = async () => {
-  const data = await getAPI(`/movie/now_playing?language=zh-tw`)
+  const data = await getAPI(`/movie/now_playing`)
   movieList.value = data.results
   listPage.value = data.total_pages
   currentPage.value = data.page
@@ -58,7 +58,7 @@ const detail = (id) => {
 }
 
 const goToPage = async (page) => {
-  const data = await getAPI(`/movie/now_playing?language=zh-tw&page=${page}`)
+  const data = await getAPI(`/movie/now_playing&page=${page}`)
   movieList.value = data.results
   listPage.value = data.total_pages
   currentPage.value = data.page

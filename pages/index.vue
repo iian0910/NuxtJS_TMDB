@@ -80,7 +80,7 @@ onMounted(() => {
 
 const getMovieList = async () => {
   isLoading.value = true
-  const data = await getAPI(`/movie/now_playing?language=zh-tw`)
+  const data = await getAPI(`/movie/now_playing`)
   movieList.value = data.results.slice(0, 12)
   listPage.value = data.total_pages
   currentPage.value = data.page
@@ -89,7 +89,7 @@ const getMovieList = async () => {
 
 const getPopularList = async () => {
   isLoading.value = true
-  const data = await getAPI(`/movie/popular?language=zh-tw`)
+  const data = await getAPI(`/movie/popular`)
   popularList.value = data.results.slice(0, 6)
   isLoading.value = false
 }

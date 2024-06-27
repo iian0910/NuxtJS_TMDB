@@ -71,23 +71,18 @@
       />
       <div class="text-white" v-if="!movieReviews.length">尚無評論...</div>
       <div
-        v-else
-        class="card mb-3 col-12 col-md-8 my-3"
+        class="col-12 col-md-4 mb-3"
         v-for="review in movieReviews"
         :key="review.id"
       >
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              :src="`https://image.tmdb.org/t/p/w500${review.author_details.avatar_path}`"
-              class="img-fluid rounded-start"
-              :alt="review.author_details.username">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body text-white lh-base ps-3">
-              <h5 class="card-title">{{ review.author }}</h5>
-              <p class="card-text">{{ review.content }}</p>
-              <p class="card-text"><small class="text-muted">{{ review.updated_at }}</small></p>
+        <div
+          class="card h-100 bg-transparent border-white"
+        >
+          <div class="card-body">
+            <p class="card-text text-white">{{ spliceContent(review.content) }}</p>
+            <small class="card-title text-end d-block release_date">— {{ review.author }} {{ dateTrans(review.updated_at) }}</small>
+            <div class="d-flex justify-content-md-end mt-3">
+              <button type="button" class="btn btn-outline-danger">MORE...</button>
             </div>
           </div>
         </div>
@@ -119,9 +114,23 @@ onMounted(() => {
   getMovieReviews()
 })
 
+const dateTrans = (date) => {
+  const year = new Date(date).getFullYear()
+  const month = (new Date(date).getMonth() + 1).toString().padStart(2, '0')
+  const day = (new Date(date).getDay()).toString().padStart(2, '0')
+
+  return month + '/' + day + '/' + year
+}
+
+const spliceContent = (content) => {
+  if(content.length > 100) {
+    return content.substring(0, 180) + '...'
+  }
+}
+
 const getDetail = async () => {
   isLoading.value = true
-  const data = await getAPI(`/movie/${route.params.id}?language=zh-tw`)
+  const data = await getAPI(`/movie/${route.params.id}`)
   movie.value = data
   isLoading.value = false
 }
@@ -135,7 +144,7 @@ const getMovieImages = async () => {
 
 const getMovieReviews = async () => {
   isLoading.value = true
-  const data = await getAPI(`/movie/${route.params.id}/reviews?language=zh-tw`)
+  const data = await getAPI(`/movie/${route.params.id}/reviews`)
   movieReviews.value = data.results
   isLoading.value = false
 }

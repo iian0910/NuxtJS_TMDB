@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="detail(movie.id)">
+  <div class="card bg-transparent" @click="detail(movie.id)">
     <img
       :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
       class="card-img-top img-thumbnail"

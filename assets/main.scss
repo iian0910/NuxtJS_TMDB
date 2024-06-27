@@ -22,6 +22,8 @@
 @import "bootstrap/scss/helpers";
 @import "bootstrap/scss/pagination";
 @import "bootstrap/scss/spinners";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/card";
 
 @import "bootstrap/scss/utilities/api";
 
@@ -33,4 +35,8 @@ body {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.release_date {
+  color: rgba(white, 0.5);
 }
