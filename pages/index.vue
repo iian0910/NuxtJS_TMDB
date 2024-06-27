@@ -14,7 +14,7 @@
           text="現正熱映"
         />
         <div
-          class="col-12 col-sm-6 col-lg-2 cursor-pointer mb-3"
+          class="col-6 col-lg-2 cursor-pointer mb-3"
           v-for="movie in movieList"
           :key="movie.id"
         >
@@ -39,7 +39,7 @@
           text="TOP 排行榜"
         />
         <div
-          class="col-12 col-sm-6 col-lg-2 cursor-pointer mb-3"
+          class="col-6 col-lg-2 cursor-pointer mb-3"
           v-for="movie in popularList"
           :key="movie.id"
         >
