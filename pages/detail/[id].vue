@@ -32,15 +32,6 @@
         </div>
         <div class="mb-4">
           <p class="text-white">製作公司：</p>
-          <!-- <div class="ms-3">
-            <span
-              class="badge rounded-pill bg-warning text-dark me-2 my-1 px-3 py-1 mb-3 d-inline"
-              v-for="company in movie.production_companies"
-              :key="company.id"
-            >
-              {{ company.name }} ({{ company.origin_country }})
-            </span>
-          </div> -->
           <ul>
             <li
               class="text-white"
