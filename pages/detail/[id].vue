@@ -15,34 +15,51 @@
         <Title
           :text="movie.title"
         />
-        <p class="text-white lh-lg mb-5">
+        <div class="text-white lh-lg mb-5">
           {{ movie.overview }}
-        </p>
-        <p class="text-white mb-4">
-          電影發音：{{ movie.spoken_languages[0].name }}
-        </p>
-        <p class="text-white mb-4">
-          電影分類：
-          <span
-            class="badge rounded-pill bg-warning text-dark me-2 px-3 py-1"
-            v-for="genre in movie.genres"
-            :key="genre.id"
-          >{{ genre.name }}</span>
-        </p>
-        <p class="text-white mb-4">
-          製作公司：
-          <span
-            class="badge rounded-pill bg-warning text-dark me-2 px-3 py-1"
-            v-for="company in movie.production_companies"
-            :key="company.id"
-          >{{ company.name }} ({{ company.origin_country }})</span>
-        </p>
-        <p class="text-white mb-4">
-          上映時間：{{ movie.release_date }}
-        </p>
+        </div>
+        <div class="mb-4">
+          <p class="text-white">電影分類：</p>
+          <div class="ms-3">
+            <span
+              class="badge rounded-pill bg-warning text-dark me-2 px-3 py-1 d-inline-block"
+              v-for="genre in movie.genres"
+              :key="genre.id"
+            >
+              {{ genre.name }}
+            </span>
+          </div>
+        </div>
+        <div class="mb-4">
+          <p class="text-white">製作公司：</p>
+          <!-- <div class="ms-3">
+            <span
+              class="badge rounded-pill bg-warning text-dark me-2 my-1 px-3 py-1 mb-3 d-inline"
+              v-for="company in movie.production_companies"
+              :key="company.id"
+            >
+              {{ company.name }} ({{ company.origin_country }})
+            </span>
+          </div> -->
+          <ul>
+            <li
+              class="text-white"
+              v-for="company in movie.production_companies"
+              :key="company.id"
+            >
+              {{ company.name }} ({{ company.origin_country }})
+            </li>
+          </ul>
+        </div>
+        <div class="mb-4">
+          <p class="text-white">上映時間</p>
+          <div class="ms-3">
+            <p class="text-white">{{ movie.release_date }}</p>
+          </div>
+        </div>
       </div>
       <div class="col-12 col-md-4">
-        <img :src="`https://image.tmdb.org/t/p/w500${movie.belongs_to_collection.poster_path}`" class="img-thumbnail" alt="...">
+        <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" class="img-thumbnail" alt="...">
       </div>
     </div>
     <div class="row py-5">
@@ -95,11 +112,12 @@ import { useRoute } from 'vue-router'
 import Title from '../components/Title.vue'
 import Loading from '../components/Loading.vue'
 import Footer from '../components/Footer.vue'
+import { initAsyncCompiler } from 'sass'
 
 const route = useRoute()
 const router = useRouter()
 
-const movie = ref(null)
+const movie = ref([])
 const movieImgs = ref([])
 const movieReviews = ref([])
 const isLoading = ref(true)
